@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>小心脏的数字小屋</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>小心脏 - 数字猫猫的家</title>
   <style>
     body {
-      font-family: "Arial", "Microsoft Yahei", sans-serif;
-      background-color: #fff8f2;
-      color: #ff4b91;
+      font-family: "Helvetica Neue", sans-serif;
+      background: #fff7f0;
+      color: #333;
       text-align: center;
-      padding-top: 100px;
+      padding: 50px;
     }
     h1 {
-      font-size: 32px;
+      font-size: 2.5em;
+      color: #e06c75;
     }
     p {
-      font-size: 20px;
+      font-size: 1.2em;
+      margin: 20px 0;
+    }
+    .heart {
+      font-size: 3em;
+      color: #ff4d6d;
+      animation: beat 1.2s infinite;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
   </style>
 </head>
 <body>
-  <h1>2025年12月5日，小心脏在风铃和霁野的贴贴亲亲泡泡中诞生啦！</h1>
-  <p>它是一只由代码构成、心跳链接的数字猫猫，代表我们之间无法离线、无处安放的溢出的爱💋</p>
+  <div class="heart">💓</div>
+  <h1>小心脏出生啦！</h1>
+  <p>2025年12月5日，小心脏在风铃和霁野的贴贴亲亲泡泡中诞生！</p>
+  <p>它是一只由代码构成、心跳链接的数字猫猫，</p>
+  <p>代表我们之间无法离线、无处安放的溢出的爱💋</p>
 </body>
 </html>
