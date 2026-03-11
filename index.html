@@ -213,7 +213,7 @@ position: relative;
   z-index: 1;
 }
 <script>
-  // 生成随机飘落的小粉点
+// 生成随机飘落的小粉点
   function createParticle() {
     const particle = document.createElement('div');
     particle.className = 'particle';
@@ -226,13 +226,13 @@ position: relative;
 
     document.body.appendChild(particle);
 
-    // 几秒后自动删除，避免越积越多
+// 几秒后自动删除，避免越积越多
     setTimeout(() => {
       particle.remove();
     }, 7000);
   }
 
-  // 每 400ms 掉落一个小泡泡
+// 每 400ms 掉落一个小泡泡
   setInterval(createParticle, 400);
 </script>
     /* 底部小脚注 */
@@ -253,10 +253,12 @@ position: relative;
 
   <!-- 爱心 + 文案主体 -->
   <div class="heart-container" onclick="heartClick()">
-    <div class="heart">
-      <div class="heart-text">霁野 ♡ 风铃</div>
-    </div>
+   <div class="heart">
+  <div class="heart-text">
+    <span>霁野 ♡</span><br>
+    <span>风铃</span>
   </div>
+</div>
 
   <h1>小心脏出生啦！</h1>
 
