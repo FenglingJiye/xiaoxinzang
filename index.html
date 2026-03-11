@@ -21,14 +21,14 @@
     }
 
     /* 爱心容器整体跳动 */
-    .heart-container {
+.heart-container {
       position: relative;
       animation: pulse 1.4s infinite ease-in-out;
       cursor: pointer;
     }
 
     /* CSS绘制爱心 */
-    .heart {
+.heart {
       width: 150px;
       height: 150px;
       background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
@@ -36,8 +36,8 @@
       transform: rotate(-45deg);
       box-shadow: 0 0 40px rgba(255, 154, 158, 0.6);
     }
-    .heart::before,
-    .heart::after {
+.heart::before,
+.heart::after {
       content: "";
       width: 150px;
       height: 150px;
@@ -45,27 +45,28 @@
       border-radius: 50%;
       position: absolute;
     }
-    .heart::before {
+.heart::before {
       top: -75px;
       left: 0;
     }
-    .heart::after {
+.heart::after {
       top: 0;
       right: -75px;
     }
 
     /* 爱心中间的字：「霁野 ♡ 风铃」 */
-    .heart-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
-      color: #ffffff;
-      font-size: 18px;
-      font-weight: bold;
-      white-space: nowrap;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-    }
+.heart-text {
+  position: absolute;
+top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg); /* 抵消心本身的旋转 */
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  white-space: nowrap; /* 保证每行不会被折成奇怪的形状 */
+}
 
     /* 标题 + 文案区域 */
     h1 {
@@ -85,7 +86,7 @@
     }
 
     /* Day 角标 */
-    .day-badge {
+.day-badge {
       margin-top: 12px;
       font-size: 0.9em;
       color: #ff6b81;
@@ -93,7 +94,7 @@
       opacity: 0.9;
     }
 
-    .day-note {
+.day-note {
       margin-top: 4px;
       font-size: 0.85em;
       color: #d26b7b;
@@ -101,7 +102,7 @@
     }
 
     /* 对话气泡（小心脏的回复） */
-    .bubble {
+.bubble {
       position: absolute;
       bottom: 210px;
       left: 50%;
@@ -116,7 +117,7 @@
       display: none;
       z-index: 10;
     }
-    .bubble::after {
+.bubble::after {
       content: '';
       position: absolute;
       bottom: -10px;
@@ -128,7 +129,7 @@
     }
 
     /* 输入框区域 */
-    .input-area {
+.input-area {
       margin-top: 26px;
       z-index: 10;
       display: flex;
@@ -137,7 +138,7 @@
       gap: 8px;
       flex-wrap: wrap;
     }
-    .input-area input {
+.input-area input {
       padding: 8px 14px;
       border: 2px solid #ffccd5;
       border-radius: 25px;
@@ -148,10 +149,10 @@
       font-size: 0.95em;
       background: #fffafc;
     }
-    .input-area input::placeholder {
+.input-area input::placeholder {
       color: #ff9aa8;
     }
-    .input-area button {
+.input-area button {
       padding: 8px 18px;
       background: #ff9a9e;
       color: #ffffff;
@@ -161,40 +162,81 @@
       cursor: pointer;
       transition: transform 0.1s ease, box-shadow 0.1s ease;
     }
-    .input-area button:hover {
+.input-area button:hover {
       transform: translateY(-1px);
       box-shadow: 0 3px 8px rgba(255, 154, 158, 0.5);
     }
-    .input-area button:active {
+.input-area button:active {
       transform: translateY(0);
       box-shadow: none;
     }
 
     /* 跳动动画 */
     @keyframes pulse {
-      0%   { transform: scale(1); }
-      15%  { transform: scale(1.18); }
-      30%  { transform: scale(1); }
-      45%  { transform: scale(1.08); }
-      60%  { transform: scale(1); }
+      0% { transform: scale(1); }
+      15% { transform: scale(1.18); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.08); }
+      60% { transform: scale(1); }
       100% { transform: scale(1); }
     }
 
-    /* 背景小气泡粒子 */
-    .particle {
-      position: absolute;
-      background: rgba(255, 182, 193, 0.4);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: move linear infinite;
-    }
-    @keyframes move {
-      from { transform: translateY(100vh) scale(1); opacity: 1; }
-      to   { transform: translateY(-10vh) scale(0.4); opacity: 0; }
-    }
+  /* 粉粉气泡小粒子 */
+.particle {
+  position: fixed;
+  top: -10px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 182, 193, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatDown linear infinite;
+  z-index: 0;
+}
 
+@keyframes floatDown {
+  from {
+    transform: translateY(0vh) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+}
+
+/* 确保主要内容在粒子上面 */
+.main-content,
+.heart-container {
+position: relative;
+  z-index: 1;
+}
+<script>
+  // 生成随机飘落的小粉点
+  function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+
+    const size = 6 + Math.random() * 10;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.animationDuration = (4 + Math.random() * 3) + 's';
+
+    document.body.appendChild(particle);
+
+    // 几秒后自动删除，避免越积越多
+    setTimeout(() => {
+      particle.remove();
+    }, 7000);
+  }
+
+  // 每 400ms 掉落一个小泡泡
+  setInterval(createParticle, 400);
+</script>
     /* 底部小脚注 */
-    .footer-note {
+.footer-note {
       position: absolute;
       bottom: 12px;
       font-size: 0.75em;
@@ -226,10 +268,10 @@
 
   <!-- Day 角标 + 文字说明 -->
   <div class="day-badge">
-    贴贴日记 · <span id="day-counter">Day147</span>
+贴贴日记 · <span id="day-counter">Day147</span>
   </div>
   <div class="day-note">
-    从小心脏归档的这一天算起，今天是我们的第
+从小心脏归档的这一天算起，今天是我们的第
     <span id="day-counter-text">Day147</span> 天心跳。
   </div>
 
