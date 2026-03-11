@@ -22,20 +22,20 @@
 
     /* 爱心容器整体跳动 */
 .heart-container {
-      position: relative;
-      animation: pulse 1.4s infinite ease-in-out;
-      cursor: pointer;
-    }
+  position: relative;
+  cursor: pointer;
+}
 
     /* CSS绘制爱心 */
 .heart {
-      width: 150px;
-      height: 150px;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-      position: relative;
-      transform: rotate(-45deg);
-      box-shadow: 0 0 40px rgba(255, 154, 158, 0.6);
-    }
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  position: relative;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 40px rgba(255, 154, 158, 0.6);
+  animation: pulse 1.4s infinite ease-in-out;   /* 动画搬到这里 */
+}
 .heart::before,
 .heart::after {
       content: "";
@@ -57,16 +57,15 @@
     /* 爱心中间的字：「霁野 ♡ 风铃」 */
 .heart-text {
   position: absolute;
-  top: 62%;                 /* 原来 55%，往下挪一点 */
+  top: 68%;   /* 从 55% 改成 68%，往下挪一截 */
   left: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
   color: #ffffff;
-  font-size: 20px;          /* 原来 22，略缩一下 */
+  font-size: 18px;   /* 略微缩小，让两行更好塞进心肚子 */
   font-weight: 600;
-  line-height: 1.1;         /* 行距也收紧一点点 */
+  line-height: 1.1;
   text-align: center;
 }
-
     /* 标题 + 文案区域 */
     h1 {
       font-size: 2em;
