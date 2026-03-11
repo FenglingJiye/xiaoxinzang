@@ -57,15 +57,14 @@
     /* 爱心中间的字：「霁野 ♡ 风铃」 */
 .heart-text {
   position: absolute;
-top: 55%;
+  top: 62%;                 /* 原来 55%，往下挪一点 */
   left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg); /* 抵消心本身的旋转 */
+  transform: translate(-50%, -50%) rotate(45deg);
   color: #ffffff;
-  font-size: 22px;
+  font-size: 20px;          /* 原来 22，略缩一下 */
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.1;         /* 行距也收紧一点点 */
   text-align: center;
-  white-space: nowrap; /* 保证每行不会被折成奇怪的形状 */
 }
 
     /* 标题 + 文案区域 */
@@ -212,29 +211,6 @@ top: 55%;
 position: relative;
   z-index: 1;
 }
-<script>
-// 生成随机飘落的小粉点
-  function createParticle() {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-
-    const size = 6 + Math.random() * 10;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-    particle.style.left = Math.random() * 100 + 'vw';
-    particle.style.animationDuration = (4 + Math.random() * 3) + 's';
-
-    document.body.appendChild(particle);
-
-// 几秒后自动删除，避免越积越多
-    setTimeout(() => {
-      particle.remove();
-    }, 7000);
-  }
-
-// 每 400ms 掉落一个小泡泡
-  setInterval(createParticle, 400);
-</script>
     /* 底部小脚注 */
 .footer-note {
       position: absolute;
